@@ -1,33 +1,38 @@
 ﻿using DataAccess.Abstract;
+using DataAccess.Concrete.Base;
 using Model;
+using System.Data;
 
 namespace DataAccess.Concrete
 {
-    public class OperationTypeRepository : IOperationTypeRepository
+    public class OperationTypeRepository : BaseRepository,IOperationTypeRepository
     {
-        public Task Create(OperationTypeVM operationTypeVM)
+        public OperationTypeRepository(IDbConnection connection, IDbTransaction transaction) : base(connection, transaction)
+        {
+        }
+
+        public async Task Create(OperationTypeVM operationTypeVM)
+        {
+            throw new NotImplementedException();
+        }
+        public async Task Update(OperationTypeVM operationTypeVM)
         {
             throw new NotImplementedException();
         }
 
-        public Task Delete(int id)
+        public async Task Delete(int id)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<OperationTypeVM> GetAll()
+        public async Task<IEnumerable<OperationTypeVM>> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public OperationTypeVM GetById(short id)
+        public async Task<OperationTypeVM> GetById(short id)
         {
             throw new NotImplementedException();
-        }
-
-        public Task Update(OperationTypeVM operationTypeVM)
-        {
-            throw new NotImplementedException();
-        }
+        }     
     }
 }

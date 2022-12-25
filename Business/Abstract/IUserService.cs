@@ -1,11 +1,11 @@
 ﻿using Model;
 
-namespace DataAccess.Abstract
+namespace Business.Abstract
 {
     /// <summary>
-    /// Includes opeartions signatures.
+    /// User service.
     /// </summary>
-    public interface IUserRepository 
+    public interface IUserService
     {
         /// <summary>
         /// Get all users.

@@ -1,9 +1,11 @@
-﻿namespace Model
+﻿using Model.Base;
+
+namespace Model
 {
     /// <summary>
     /// User view model.
     /// </summary>
-    public class UserVM
+    public class UserVM : BaseVM
     {
         /// <summary>
         /// User's name.

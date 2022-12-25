@@ -1,9 +1,11 @@
-﻿namespace Model
+﻿using Model.Base;
+
+namespace Model
 {
     /// <summary>
     /// Operation type view model.
     /// </summary>
-    public class OperationTypeVM
+    public class OperationTypeVM : BaseVM
     {
         /// <summary>
         /// Operation type name.

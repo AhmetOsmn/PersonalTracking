@@ -1,11 +1,11 @@
 ﻿using Model;
 
-namespace DataAccess.Abstract
+namespace Business.Abstract
 {
     /// <summary>
-    /// Includes opeartions signatures.
+    /// RoleOperationType service.
     /// </summary>
-    public interface IRoleOperationTypeRepository 
+    public interface IRoleOperationTypeService
     {
         /// <summary>
         /// Get all roleOperationType datas.

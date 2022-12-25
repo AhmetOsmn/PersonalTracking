@@ -1,33 +1,38 @@
 ﻿using DataAccess.Abstract;
+using DataAccess.Concrete.Base;
 using Model;
+using System.Data;
 
 namespace DataAccess.Concrete
 {
-    public class UserRoleRepository : IUserRoleRepository
+    public class UserRoleRepository : BaseRepository, IUserRoleRepository
     {
-        public Task Create(UserRoleVM userRoleVM)
+        public UserRoleRepository(IDbConnection connection, IDbTransaction transaction) : base(connection, transaction)
+        {
+        }
+
+        public async Task Create(UserRoleVM userRoleVM)
+        {
+            throw new NotImplementedException();
+        }
+        public async Task Update(UserRoleVM userRoleVM)
         {
             throw new NotImplementedException();
         }
 
-        public Task Delete(int id)
+        public async Task Delete(int id)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<UserRoleVM> GetAll()
+        public async Task<IEnumerable<UserRoleVM>> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public UserRoleVM GetById(short id)
+        public async Task<UserRoleVM> GetById(short id)
         {
             throw new NotImplementedException();
-        }
-
-        public Task Update(UserRoleVM userRoleVM)
-        {
-            throw new NotImplementedException();
-        }
+        }     
     }
 }

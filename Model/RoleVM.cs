@@ -1,9 +1,11 @@
-﻿namespace Model
+﻿using Model.Base;
+
+namespace Model
 {
     /// <summary>
     /// Role view model.
     /// </summary>
-    public class RoleVM
+    public class RoleVM : BaseVM
     {
         /// <summary>
         /// Role name.

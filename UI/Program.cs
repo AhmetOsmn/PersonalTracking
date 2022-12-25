@@ -1,9 +1,21 @@
+using Business.Abstract;
+using Business.Concrete;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.TryAddScoped<IUserService, UserService>();
+builder.Services.TryAddScoped<IOperationTypeService, OperationTypeService>();
+builder.Services.TryAddScoped<IRoleOperationTypeService, RoleOperationTypeService>();
+builder.Services.TryAddScoped<IRoleService, RoleService>();
+builder.Services.TryAddScoped<IUserRoleService, UserRoleService>();
+builder.Services.TryAddScoped<IUserService, UserService>();
+
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

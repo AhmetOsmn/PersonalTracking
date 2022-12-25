@@ -1,11 +1,11 @@
 ﻿using Model;
 
-namespace DataAccess.Abstract
+namespace Business.Abstract
 {
     /// <summary>
-    /// Includes opeartions signatures.
+    /// UserRole service.
     /// </summary>
-    public interface IUserRoleRepository
+    public interface IUserRoleService
     {
         /// <summary>
         /// Get all userRole datas.
