@@ -23,11 +23,12 @@ namespace DataAccess.Concrete.UnitOfWork
         public IUserRepository UserRepository => new UserRepository(_connection, _transaction);
 
         public IUserRoleRepository UserRoleRepository => new UserRoleRepository(_connection, _transaction);
+        public IAccountRepository AccountRepository=> new AccountRepository(_connection, _transaction);
 
         public void OpenConnection()
         {
             if(_connection.State == ConnectionState.Closed)
-            {
+            {                
                 _connection.Open();
             }
         }

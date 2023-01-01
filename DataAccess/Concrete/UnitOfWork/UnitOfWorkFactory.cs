@@ -9,7 +9,7 @@ namespace DataAccess.Concrete.UnitOfWork
         // TODO: Logger should be added.
 
         public IUnitOfWork Create()
-        {
+        {            
             return new UnitOfWork(new SqlConnection(ConfigurationExtension.GetConnectionString()));
         }
     }

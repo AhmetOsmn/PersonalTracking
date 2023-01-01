@@ -4,7 +4,7 @@ namespace Core.Extensions
 {
     public static class ConfigurationExtension
     {
-        private static IConfiguration _configuration = null;
+        private static IConfiguration _configuration;
 
         public static void SetConfiguration(IConfiguration configuration)
         {
@@ -12,7 +12,7 @@ namespace Core.Extensions
         }
 
         public static IConfiguration GetConfiguration() => _configuration;
-
-        public static string? GetConnectionString() => GetConfiguration().GetSection("ConnectionString").Value;
+        public static string? GetConnectionString() => GetConfiguration()?.GetSection("ConnectionString").Value;
+        public static short GetSystemId() => Convert.ToInt16(GetConfiguration()?.GetSection("SystemInfo.SystemId").Value);
     }
 }

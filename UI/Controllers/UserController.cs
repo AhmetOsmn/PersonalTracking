@@ -1,18 +1,21 @@
 ﻿using Business.Abstract;
+using Core.Extensions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Model;
+using Model.Create;
 
 namespace UI.Controllers
 {
     public class UserController : Controller
     {
         private readonly IUserService _userService;
-        private readonly short _systemId = 1; 
+        private readonly short _systemId; 
 
         public UserController(IUserService userService)
         {
             _userService = userService;
+            _systemId = ConfigurationExtension.GetSystemId();
         }
 
         // GET: UserController
@@ -37,17 +40,17 @@ namespace UI.Controllers
         // POST: UserController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(UserVM userVM)
+        public IActionResult Create(UserCreateVM userCreateVM)
         {
             try
             {
-                userVM.CreatedById = _systemId;
-                _userService.Create(userVM);
+                userCreateVM.CreatedById = _systemId;
+                _userService.Create(userCreateVM);
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return View(userVM);
+                return View(userCreateVM);
             }
         }
 

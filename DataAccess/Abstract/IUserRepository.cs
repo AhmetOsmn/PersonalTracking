@@ -1,4 +1,5 @@
 ﻿using Model;
+using Model.Create;
 
 namespace DataAccess.Abstract
 {
@@ -22,7 +23,7 @@ namespace DataAccess.Abstract
         /// Create user.
         /// </summary>
         /// <param name="operationTypeVM">Includes user's values.</param>
-        Task Create(UserVM userVM);
+        Task Create(UserCreateVM userCreateVM);
 
         /// <summary>
         /// Update user.

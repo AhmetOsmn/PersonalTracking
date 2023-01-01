@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using DataAccess.Abstract.UnitOfWork;
 using Model;
+using Model.Create;
 
 namespace Business.Concrete
 {
@@ -13,9 +14,9 @@ namespace Business.Concrete
             _unitOfWorkFactory = unitOfWorkFactory;
         }
 
-        public async Task Create(UserVM userVM)
+        public async Task Create(UserCreateVM userCreateVM)
         {
-            if(userVM == null)
+            if(userCreateVM == null)
             {
                 return;
             }
@@ -24,7 +25,7 @@ namespace Business.Concrete
 
             unitOfWork.OpenConnection();
 
-            await unitOfWork.UserRepository.Create(userVM);
+            await unitOfWork.UserRepository.Create(userCreateVM);
 
             unitOfWork.CloseConnection();
         }

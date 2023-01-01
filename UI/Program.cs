@@ -1,21 +1,28 @@
 using Business.Abstract;
 using Business.Concrete;
-using Microsoft.Extensions.DependencyInjection.Extensions;
+using Core.Extensions;
+using DataAccess.Abstract.UnitOfWork;
+using DataAccess.Concrete.UnitOfWork;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddMvc();
 builder.Services.AddControllersWithViews();
 
-builder.Services.TryAddScoped<IUserService, UserService>();
-builder.Services.TryAddScoped<IOperationTypeService, OperationTypeService>();
-builder.Services.TryAddScoped<IRoleOperationTypeService, RoleOperationTypeService>();
-builder.Services.TryAddScoped<IRoleService, RoleService>();
-builder.Services.TryAddScoped<IUserRoleService, UserRoleService>();
-builder.Services.TryAddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IUnitOfWorkFactory, UnitOfWorkFactory>();
+
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IRoleService, RoleService>();
+builder.Services.AddScoped<IUserRoleService, UserRoleService>();
+builder.Services.AddScoped<IOperationTypeService, OperationTypeService>();
+builder.Services.AddScoped<IRoleOperationTypeService, RoleOperationTypeService>();
+builder.Services.AddScoped<IAccountService, AccountService>();
+
 
 var app = builder.Build();
 
+ConfigurationExtension.SetConfiguration(app.Configuration);
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -34,6 +41,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Account}/{action=Login}/{id?}");
 
 app.Run();

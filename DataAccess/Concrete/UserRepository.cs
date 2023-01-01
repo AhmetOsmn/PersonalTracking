@@ -2,6 +2,7 @@
 using DataAccess.Abstract;
 using DataAccess.Concrete.Base;
 using Model;
+using Model.Create;
 using System.Data;
 
 namespace DataAccess.Concrete
@@ -12,7 +13,7 @@ namespace DataAccess.Concrete
         {
         }
 
-        public async Task Create(UserVM userVM)
+        public async Task Create(UserCreateVM userCreateVM)
         {
             string query = 
             @$"
@@ -21,29 +22,20 @@ namespace DataAccess.Concrete
                     [Name]
                     [Surname],
                     [Age],                
-                    [CreatedDate], 
-                    [CreatedById], 
-                    [ModifiedDate],
-                    [ModifiedById],
-                    [DeletedDate], 
-                    [DeletedById]                     
+                    [CreatedById]         
                 )
                 VALUES
                 (
                     @Name,
                     @Surname,
                     @Age,
-                    @CreatedDate,
-                    @CreatedById,
-                    @ModifiedDate,
-                    @ModifiedById,
-                    @DeletedDate,
-                    @DeletedById                    
+                    @CreatedById               
                 )
             ";
 
-            await Connection.ExecuteAsync(query, userVM, transaction: Transaction);
+            await Connection.ExecuteAsync(query, userCreateVM, transaction: Transaction);
         }
+
         public async Task Update(UserVM userVM)
         {
             string query = 

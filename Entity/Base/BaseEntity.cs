@@ -13,7 +13,7 @@
         /// <summary>
         /// Entity created date.
         /// </summary>
-        public DateTime CreatedDate { get; set; }
+        public DateTime CreatedDate { get; set; } 
 
         /// <summary>
         /// Creator's id.

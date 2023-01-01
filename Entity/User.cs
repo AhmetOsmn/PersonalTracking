@@ -21,5 +21,15 @@ namespace Entity
         /// User's age.
         /// </summary>
         public short Age { get; set; }
+
+        /// <summary>
+        /// Username
+        /// </summary>
+        public string Username { get; set; }
+
+        /// <summary>
+        /// Password
+        /// </summary>
+        public string Password { get; set; }
     }
 }
